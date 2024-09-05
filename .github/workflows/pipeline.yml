@@ -24,9 +24,7 @@ jobs:
     - name: Run linting
       run: npm run lint # Runs eslint to ensure code quality
 
-    - name: Build project
-      run: npm run build # Builds the project with Vite
-
+  
     - name: Deploy to Staging
       if: success()
       run: |
