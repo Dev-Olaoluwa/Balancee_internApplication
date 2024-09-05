@@ -21,11 +21,14 @@ jobs:
     - name: Install npm dependencies
       run: npm install
 
-    - name: Run tests
-      run: npm run dev 
-      
+    - name: Run linting
+      run: npm run lint # Runs eslint to ensure code quality
+
+    - name: Build project
+      run: npm run build # Builds the project with Vite
+
     - name: Deploy to Staging
       if: success()
       run: |
         echo "Deploying to staging environment..."
-      
+        # Insert your actual deployment commands here
