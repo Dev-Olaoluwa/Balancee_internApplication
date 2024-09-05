@@ -28,16 +28,9 @@ jobs:
       with:
         node-version: '16'
 
-    # Install dependencies in the client folder
-    - name: Install dependencies
-      run: |
-        cd client
-        npm install
-
     # Run tests
     - name: Run tests
       run: |
-        cd client
         npm test
   
   deploy:
