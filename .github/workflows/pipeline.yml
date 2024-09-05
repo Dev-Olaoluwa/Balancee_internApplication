@@ -1,0 +1,50 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js (if applicable, replace with your environment)
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Run Tests
+      run: npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: success()
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Apache
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y apache2
+        sudo systemctl start apache2
+        sudo systemctl enable apache2
+    
+    - name: Configure Apache and Update Index File
+      run: |
+        echo "This is my intern application demo to balance" | sudo tee /var/www/html/index.html
+        sudo systemctl restart apache2
+
+    - name: Verify Apache Installation
+      run: curl -I localhost
+
