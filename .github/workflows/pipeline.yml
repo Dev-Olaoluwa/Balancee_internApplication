@@ -24,6 +24,14 @@ jobs:
       with:
         node-version: '16'
 
+    
+    # Start MongoDB service
+    - name: Start MongoDB service
+      run: |
+        sudo systemctl start mongodb
+        sudo systemctl status mongodb
+
+
      # Install dependencies
     - name: Install npm dependencies
       run: npm install
