@@ -49,6 +49,12 @@ Whenever code changes are pushed to the main branch, the pipeline is triggered a
 
 ---
 
+5. The CI/CD pipeline was built using **GitHub Actions** due to its seamless integration with GitHub, cost-effectiveness, and flexibility. This tool allows for easy automation of tasks like linting, building, and deployment without the need for additional external services. The pipeline is triggered on pushes to the `main` branch to ensure that only production-ready code is deployed to the staging environment, streamlining the process for continuous delivery.
+
+The Ubuntu** runner environment was chosen for its compatibility with most tools and its stability as an industry-standard option. **Node.js** was set up to manage dependencies and run the build process via **Vite**, which was selected for its speed and modern JavaScript compatibility. Including linting in the pipeline ensures that code quality is maintained, catching issues early before they affect the build or deployment process.
+
+Automated deployment to a staging environment was added to reduce the risk of human error and speed up the release cycle. By failing early on lint or build errors, the pipeline guarantees that only working code gets deployed, maintaining high standards of code quality and minimizing bugs in production. Overall, these choices create a fast, efficient, and reliable CI/CD process.
+
 The site is a react + Vite with Nodejs as well
 
 # React + Vite
